@@ -1,29 +1,32 @@
 /*
- * Artist.h
+ * Disc.h
  *
  *  Created on: Nov 7, 2014
  *      Author: gerlof
  */
 #include "LibraryItem.h"
 
-#ifndef ARTIST_H_
-#define ARTIST_H_
+#ifndef DISC_H_
+#define DISC_H_
 
-class Artist : public LibraryItem {
+class Artist;
+
+class Disc : public LibraryItem {
 public:
-	Artist(std::string artist);
-	virtual ~Artist();
+	Disc(std::string disc, Artist* artist);
+	virtual ~Disc();
 
 	virtual std::string					getTitle();
-	virtual void						setTitle(std::string artist);
+	virtual void						setTitle(std::string disc);
 
 	virtual void								addChild(LibraryItem* child);
 	virtual std::vector<LibraryItem*>::iterator	getChildren();
 	virtual bool								hasChildren();
 private:
-	std::string m_artist;
+	std::string	m_disc;
+	Artist*		p_artist;
 
 	std::vector<LibraryItem*> m_children;
 };
 
-#endif /* ARTIST_H_ */
+#endif /* DISC_H_ */

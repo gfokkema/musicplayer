@@ -1,5 +1,6 @@
 set (library_sources
 	Artist.cpp
+	Disc.cpp
 	LibraryModel.cpp
 	Song.cpp
 )
