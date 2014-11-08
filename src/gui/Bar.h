@@ -6,7 +6,7 @@
  *      Author: gerlof
  */
 
-#include <gtkmm/menubar.h>
+#include <gtkmm-3.0/gtkmm.h>
 
 #ifndef BAR_H_
 #define BAR_H_

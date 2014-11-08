@@ -13,13 +13,12 @@
 #ifndef PLAYERMODEL_H_
 #define PLAYERMODEL_H_
 
-class Playlist;
 class Song;
 
 class PlayerModel : public Observable {
 public:
 	PlayerModel();
-	PlayerModel(Playlist* playlist);
+	PlayerModel(std::vector<Song*> playlist);
 	virtual ~PlayerModel();
 
 	void previous();
@@ -27,6 +26,8 @@ public:
 	void pause();
 	void stop();
 	void next();
+
+	Song* nowPlaying() { return p_nowplaying; }
 
 	bool on_bus_message(const Glib::RefPtr<Gst::Bus>& /* bus */,
 						const Glib::RefPtr<Gst::Message>& message);
@@ -37,6 +38,7 @@ private:
 	Glib::RefPtr<Glib::MainLoop>	p_mainloop;
 	Glib::RefPtr<Gst::PlayBin> 		p_playbin;
 	std::vector<Song*>				m_playlist;
+	Song*							p_nowplaying;
 };
 
 #endif /* PLAYERMODEL_H_ */

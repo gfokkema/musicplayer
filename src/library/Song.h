@@ -20,6 +20,7 @@ public:
 	virtual std::string	getDisc();
 	virtual int			getNumber();
 	virtual std::string	getTitle();
+	virtual std::string	getPath();
 	virtual void		setTitle(std::string title);
 private:
 	std::string	m_artist;

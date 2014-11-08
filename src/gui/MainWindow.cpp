@@ -6,8 +6,6 @@
  */
 #include "MainWindow.h"
 
-#include <gtkmm/box.h>
-
 #include "Bar.h"
 #include "LibraryView.h"
 #include "PlayerView.h"

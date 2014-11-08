@@ -4,7 +4,7 @@
  *  Created on: Nov 2, 2014
  *      Author: gerlof
  */
-#include <gtkmm/window.h>
+#include <gtkmm-3.0/gtkmm.h>
 
 #ifndef MAINWINDOW_H_
 #define MAINWINDOW_H_

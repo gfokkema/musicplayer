@@ -8,7 +8,15 @@
 
 #include <iostream>
 
+#include "library/Song.h"
+
 PlayerModel::PlayerModel()
+: PlayerModel(std::vector<Song*>())
+{
+}
+
+PlayerModel::PlayerModel(std::vector<Song*> playlist)
+: m_playlist(playlist)
 {
 	Gst::init();
 	p_playbin = Gst::PlayBin::create();
@@ -19,6 +27,7 @@ PlayerModel::PlayerModel()
 	}
 }
 
+
 PlayerModel::~PlayerModel()
 {
 	p_playbin->set_state(Gst::STATE_NULL);
@@ -27,7 +36,8 @@ PlayerModel::~PlayerModel()
 void
 PlayerModel::play()
 {
-	p_playbin->property_uri() = Glib::filename_to_uri("/mnt/fokkema/muziek/Flaw/Through the Eyes/08 What I Have to Do.flac");
+	p_nowplaying = m_playlist.front();
+	p_playbin->property_uri() = Glib::filename_to_uri(p_nowplaying->getPath());
 
 	// Create the main loop.
 	p_mainloop = Glib::MainLoop::create();
@@ -42,6 +52,12 @@ PlayerModel::play()
 	p_playbin->set_state(Gst::STATE_PLAYING);
 	std::cout << "Running." << std::endl;
 	p_mainloop->run();
+}
+
+void
+PlayerModel::pause()
+{
+	// DO NOTHING YET
 }
 
 void
@@ -60,7 +76,7 @@ PlayerModel::getPlaylist()
 // This function is used to receive asynchronous messages in the main loop.
 bool
 PlayerModel::on_bus_message(const Glib::RefPtr<Gst::Bus>& /* bus */,
-							const Glib::RefPtr<Gst::Message>& message)
+		const Glib::RefPtr<Gst::Message>& message)
 {
 	switch(message->get_message_type()) {
 	case Gst::MESSAGE_EOS:

@@ -39,6 +39,12 @@ Song::getTitle()
 	return m_title;
 }
 
+std::string
+Song::getPath()
+{
+	return m_path.generic_string();
+}
+
 void
 Song::setTitle(std::string title) {
 	m_title = title;

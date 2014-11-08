@@ -4,10 +4,6 @@
  *  Created on: Nov 2, 2014
  *      Author: gerlof
  */
-
-#include <gtkmm/menu.h>
-#include <gtkmm/menuitem.h>
-
 #include "Bar.h"
 
 Bar::Bar() {
