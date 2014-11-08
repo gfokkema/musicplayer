@@ -5,6 +5,7 @@
  *      Author: gerlof
  */
 #include "PlayerModel.h"
+#include <thread>
 
 #ifndef PLAYERCONTROLLER_H_
 #define PLAYERCONTROLLER_H_
@@ -15,6 +16,7 @@ public:
 	virtual ~PlayerController();
 private:
 	PlayerModel* p_player;
+	std::thread playerthread;
 };
 
 #endif /* PLAYERCONTROLLER_H_ */

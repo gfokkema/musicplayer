@@ -16,7 +16,7 @@ PlayerModel::PlayerModel()
 	if(!p_playbin)
 	{
 		std::cerr << "The playbin could not be created." << std::endl;
-	} else play();
+	}
 }
 
 PlayerModel::~PlayerModel()
@@ -58,8 +58,9 @@ PlayerModel::getPlaylist()
 }
 
 // This function is used to receive asynchronous messages in the main loop.
-bool PlayerModel::on_bus_message(const Glib::RefPtr<Gst::Bus>& /* bus */,
-		const Glib::RefPtr<Gst::Message>& message)
+bool
+PlayerModel::on_bus_message(const Glib::RefPtr<Gst::Bus>& /* bus */,
+							const Glib::RefPtr<Gst::Message>& message)
 {
 	switch(message->get_message_type()) {
 	case Gst::MESSAGE_EOS:
