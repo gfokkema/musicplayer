@@ -11,9 +11,9 @@
 
 LibraryView::LibraryView(LibraryController* controller)
 {
-	//for (Song* song : controller->getLibrary()->getSong("")) {
-	//	add(*Gtk::manage(new SongItem(song)));
-	//}
+	for (Song* song : controller->getLibrary()->getSong("")) {
+		add(*Gtk::manage(new SongItem(song)));
+	}
 }
 
 LibraryView::~LibraryView()

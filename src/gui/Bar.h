@@ -14,8 +14,6 @@ class Bar : public Gtk::MenuBar {
 public:
 	Bar();
 	virtual ~Bar();
-protected:
-	void on_open();
 };
 
 #endif /* BAR_H_ */

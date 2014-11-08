@@ -8,8 +8,6 @@
 #include <gtkmm/menu.h>
 #include <gtkmm/menuitem.h>
 
-#include <iostream>
-
 #include "Bar.h"
 
 Bar::Bar() {
@@ -18,7 +16,6 @@ Bar::Bar() {
 
 	Gtk::Menu *menu_file = Gtk::manage(new Gtk::Menu());
 	Gtk::MenuItem *menuitem_open = Gtk::manage(new Gtk::MenuItem("_Open", true));
-	menuitem_open->signal_activate().connect(sigc::mem_fun(*this, &Bar::on_open));
 	Gtk::MenuItem *menuitem_quit = Gtk::manage(new Gtk::MenuItem("_Quit", true));
 	menu_file->append(*menuitem_open);
 	menu_file->append(*menuitem_quit);
@@ -34,8 +31,4 @@ Bar::Bar() {
 
 Bar::~Bar() {
 	// TODO Auto-generated destructor stub
-}
-
-void Bar::on_open() {
-	std::cout << "open file dialog is shown" << std::endl;
 }

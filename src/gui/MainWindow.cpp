@@ -6,6 +6,8 @@
  */
 #include "MainWindow.h"
 
+#include <gtkmm/box.h>
+
 #include "Bar.h"
 #include "LibraryView.h"
 #include "PlayerView.h"
@@ -17,8 +19,8 @@ MainWindow::MainWindow(LibraryView* libarywidget, PlayerView* playerwidget)
 	Gtk::Box *vbox = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
 	Bar *bar = Gtk::manage(new Bar());
 	vbox->pack_start(*bar, Gtk::PACK_SHRINK, 0);
-	//vbox->add(*libarywidget);
-	//vbox->add(*playerwidget);
+	vbox->pack_start(*libarywidget, Gtk::PACK_EXPAND_WIDGET);
+	vbox->pack_start(*playerwidget, Gtk::PACK_EXPAND_WIDGET);
 
 	add(*vbox);
 	show_all();
