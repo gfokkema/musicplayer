@@ -11,7 +11,7 @@
 #define LIBRARYMODEL_H_
 
 // FORWARD DECLARATIONS
-class LibraryItem;
+class Song;
 
 class LibraryObserver {
 public:
@@ -23,15 +23,15 @@ public:
 	LibraryModel();
 	virtual ~LibraryModel();
 
-	void						addItem(LibraryItem* item);
-	std::vector<LibraryItem*>	getItems(std::string filter);
+	void					addSong(Song* song);
+	std::vector<Song*>		getSong(std::string filter);
 
 	void	notifyObservers();
 	void	registerObserver(LibraryObserver* obs);
 	void	removeObservers();
 private:
-	std::vector<LibraryItem*> items;
-	std::vector<LibraryObserver*> observers;
+	std::vector<LibraryObserver*> m_observers;
+	std::vector<Song*> m_songs;
 };
 
 #endif /* LIBRARYMODEL_H_ */

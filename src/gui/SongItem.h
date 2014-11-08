@@ -10,12 +10,12 @@
 #ifndef SONGITEM_H_
 #define SONGITEM_H_
 
-class SongItem : public Gtk::Box {
+class Song;
+
+class SongItem : public Gtk::HBox {
 public:
-	SongItem(std::string title);
+	SongItem(Song* song);
 	virtual ~SongItem();
-private:
-	Gtk::Label *m_title;
 };
 
 #endif /* SONGITEM_H_ */

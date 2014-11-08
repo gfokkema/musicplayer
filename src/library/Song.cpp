@@ -4,19 +4,33 @@
  *  Created on: Nov 5, 2014
  *      Author: gerlof
  */
-#include "Artist.h"
-#include "Disc.h"
 #include "Song.h"
 
-Song::Song(int number, std::string title, Artist* artist, Disc* disc)
-: m_number(number), m_title(title), p_artist(artist), p_disc(disc)
+Song::Song(std::string artist, std::string disc, int number, std::string title, boost::filesystem::path path)
+: m_artist(artist), m_disc(disc), m_number(number), m_title(title), m_path(path)
 {
-	if (artist != nullptr) p_artist->addChild(this);
-	if (disc != nullptr) p_artist->addChild(this);
 }
 
 Song::~Song()
 {
+}
+
+std::string
+Song::getArtist()
+{
+	return m_artist;
+}
+
+std::string
+Song::getDisc()
+{
+	return m_disc;
+}
+
+int
+Song::getNumber()
+{
+	return m_number;
 }
 
 std::string

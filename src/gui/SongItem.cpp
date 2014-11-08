@@ -7,13 +7,16 @@
 
 #include "SongItem.h"
 
-SongItem::SongItem(std::string title)
-: m_title(Gtk::manage(new Gtk::Label(title)))
+#include "library/Song.h"
+
+SongItem::SongItem(Song* song)
 {
-	add(*m_title);
+	add(*Gtk::manage(new Gtk::Label(song->getArtist())));
+	add(*Gtk::manage(new Gtk::Label(song->getDisc())));
+	add(*Gtk::manage(new Gtk::Label(std::to_string(song->getNumber()))));
+	add(*Gtk::manage(new Gtk::Label(song->getTitle())));
 }
 
 SongItem::~SongItem() {
-	// TODO Auto-generated destructor stub
 }
 

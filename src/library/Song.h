@@ -4,30 +4,30 @@
  *  Created on: Nov 5, 2014
  *      Author: gerlof
  */
-#include "LibraryItem.h"
+#include <boost/filesystem.hpp>
+#include <string>
+#include <vector>
 
 #ifndef SONG_H_
 #define SONG_H_
 
-class Artist;
-class Disc;
-
-class Song : public LibraryItem {
+class Song {
 public:
-	Song(int number, std::string title, Artist* artist = nullptr, Disc* disc = nullptr);
+	Song(std::string artist, std::string disc, int number, std::string title, boost::filesystem::path m_path);
 	virtual ~Song();
 
-	virtual std::string					getTitle();
-	virtual void						setTitle(std::string title);
-
-	virtual void								addChild(LibraryItem* child) { return; }
-	virtual std::vector<LibraryItem*>::iterator	getChildren() { return std::vector<LibraryItem*>().begin(); }
-	virtual bool								hasChildren() { return false; }
+	virtual std::string	getArtist();
+	virtual std::string	getDisc();
+	virtual int			getNumber();
+	virtual std::string	getTitle();
+	virtual void		setTitle(std::string title);
 private:
+	std::string	m_artist;
+	std::string	m_disc;
 	int			m_number;
 	std::string	m_title;
-	Artist*		p_artist;
-	Disc*		p_disc;
+
+	boost::filesystem::path m_path;
 };
 
 #endif /* SONG_H_ */

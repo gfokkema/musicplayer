@@ -9,15 +9,13 @@
 #ifndef MAINWINDOW_H_
 #define MAINWINDOW_H_
 
-class LibraryModel;
-class Song;
+class LibraryView;
+class PlayerView;
 
 class MainWindow : public Gtk::Window {
 public:
-	MainWindow(LibraryModel* model);
+	MainWindow(LibraryView* libarywidget, PlayerView* playerwidget);
 	virtual ~MainWindow();
-private:
-	void on_button_clicked();
 };
 
 #endif /* MAINWINDOW_H_ */

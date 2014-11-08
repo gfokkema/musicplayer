@@ -6,29 +6,31 @@
  */
 #include "LibraryModel.h"
 
-LibraryModel::LibraryModel() {
-	// TODO Auto-generated constructor stub
+#include "Song.h"
+
+LibraryModel::LibraryModel()
+{
 }
 
-LibraryModel::~LibraryModel() {
-	// TODO Auto-generated destructor stub
+LibraryModel::~LibraryModel()
+{
 }
 
 void
-LibraryModel::addItem(LibraryItem* item) {
-	items.push_back(item);
+LibraryModel::addSong(Song* song) {
+	m_songs.push_back(song);
 	notifyObservers();
 }
 
-std::vector<LibraryItem*>
-LibraryModel::getItems(std::string filter) {
-	return items;
+std::vector<Song*>
+LibraryModel::getSong(std::string filter) {
+	return m_songs;
 }
 
 void
 LibraryModel::notifyObservers()
 {
-	for (LibraryObserver* obs : observers) {
+	for (LibraryObserver* obs : m_observers) {
 		obs->update();
 	}
 }
@@ -36,11 +38,11 @@ LibraryModel::notifyObservers()
 void
 LibraryModel::registerObserver(LibraryObserver* obs)
 {
-	observers.push_back(obs);
+	m_observers.push_back(obs);
 }
 
 void
 LibraryModel::removeObservers()
 {
-	observers.clear();
+	m_observers.clear();
 }
