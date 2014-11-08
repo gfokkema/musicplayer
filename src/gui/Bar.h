@@ -1,5 +1,6 @@
 /*
  * Bar.h
+ *  Displays the menu bar on top of the screen.
  *
  *  Created on: Nov 2, 2014
  *      Author: gerlof

@@ -26,23 +26,3 @@ std::vector<Song*>
 LibraryModel::getSong(std::string filter) {
 	return m_songs;
 }
-
-void
-LibraryModel::notifyObservers()
-{
-	for (LibraryObserver* obs : m_observers) {
-		obs->update();
-	}
-}
-
-void
-LibraryModel::registerObserver(LibraryObserver* obs)
-{
-	m_observers.push_back(obs);
-}
-
-void
-LibraryModel::removeObservers()
-{
-	m_observers.clear();
-}

@@ -7,30 +7,22 @@
 #include <string>
 #include <vector>
 
+#include "core/Observable.h"
+
 #ifndef LIBRARYMODEL_H_
 #define LIBRARYMODEL_H_
 
 // FORWARD DECLARATIONS
 class Song;
 
-class LibraryObserver {
-public:
-	virtual void update() = 0;
-};
-
-class LibraryModel {
+class LibraryModel : public Observable {
 public:
 	LibraryModel();
 	virtual ~LibraryModel();
 
-	void					addSong(Song* song);
-	std::vector<Song*>		getSong(std::string filter);
-
-	void	notifyObservers();
-	void	registerObserver(LibraryObserver* obs);
-	void	removeObservers();
+	void				addSong(Song* song);
+	std::vector<Song*>	getSong(std::string filter);
 private:
-	std::vector<LibraryObserver*> m_observers;
 	std::vector<Song*> m_songs;
 };
 

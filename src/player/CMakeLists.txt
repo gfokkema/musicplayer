@@ -4,3 +4,4 @@ set (player_sources
 )
 
 add_library (player ${player_sources})
+target_link_libraries(player ${GSTREAMERMM_LIBRARIES})
