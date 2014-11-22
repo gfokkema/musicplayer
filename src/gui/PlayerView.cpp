@@ -10,11 +10,15 @@
 
 PlayerView::PlayerView(PlayerController* controller)
 {
-	Gtk::Button* previous	= Gtk::manage(new Gtk::Button("Previous", false));
-	Gtk::Button* play		= Gtk::manage(new Gtk::Button("Play", false));
-	Gtk::Button* pause		= Gtk::manage(new Gtk::Button("Pause", false));
-	Gtk::Button* stop		= Gtk::manage(new Gtk::Button("Stop", false));
-	Gtk::Button* next		= Gtk::manage(new Gtk::Button("Next", false));
+	Gtk::Button* previous	= Gtk::manage(new Gtk::Button());
+	Gtk::Button* play		= Gtk::manage(new Gtk::Button());
+	Gtk::Button* stop		= Gtk::manage(new Gtk::Button());
+	Gtk::Button* next		= Gtk::manage(new Gtk::Button());
+
+	previous->set_image_from_icon_name("media-skip-backward");
+	play	->set_image_from_icon_name("media-playback-start");
+	stop	->set_image_from_icon_name("media-playback-stop");
+	next	->set_image_from_icon_name("media-skip-forward");
 
 	previous->signal_pressed()	.connect(sigc::mem_fun(controller, &PlayerController::on_previous_pressed));
 	play->signal_pressed()		.connect(sigc::mem_fun(controller, &PlayerController::on_play_pressed));
