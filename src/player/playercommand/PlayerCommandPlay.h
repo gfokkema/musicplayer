@@ -9,8 +9,6 @@
 #ifndef PLAYERCOMMANDPLAY_H_
 #define PLAYERCOMMANDPLAY_H_
 
-class PlayerModel;
-
 class PlayerCommandPlay : public PlayerCommand {
 public:
 	PlayerCommandPlay(PlayerModel* player) : PlayerCommand(player) {};

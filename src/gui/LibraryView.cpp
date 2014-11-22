@@ -11,9 +11,13 @@
 
 LibraryView::LibraryView(LibraryController* controller)
 {
+	Gtk::Box *vbox = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
+
 	for (Song* song : controller->getLibrary()->getSong("")) {
-		add(*Gtk::manage(new SongItem(song)));
+		vbox->pack_start(*Gtk::manage(new SongItem(song)), Gtk::PACK_EXPAND_WIDGET);
 	}
+
+	add(*vbox);
 }
 
 LibraryView::~LibraryView()

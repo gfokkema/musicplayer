@@ -27,18 +27,18 @@ public:
 	void stop();
 	void next();
 
-	Song* nowPlaying() { return p_nowplaying; }
+	Song* nowPlaying() { return (Song*)*p_nowplaying; }
 
 	bool on_bus_message(const Glib::RefPtr<Gst::Bus>& /* bus */,
-						const Glib::RefPtr<Gst::Message>& message);
+	                    const Glib::RefPtr<Gst::Message>& message);
 
 	void				add(Song* song);
+	Gst::State			getState();
 	std::vector<Song*>	getPlaylist();
 private:
-	Glib::RefPtr<Glib::MainLoop>	p_mainloop;
 	Glib::RefPtr<Gst::PlayBin> 		p_playbin;
 	std::vector<Song*>				m_playlist;
-	Song*							p_nowplaying;
+	std::vector<Song*>::iterator	p_nowplaying;
 };
 
 #endif /* PLAYERMODEL_H_ */

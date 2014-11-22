@@ -6,6 +6,8 @@
  */
 #include "PlayerView.h"
 
+#include <iostream>
+
 PlayerView::PlayerView(PlayerController* controller)
 {
 	Gtk::Button* previous	= Gtk::manage(new Gtk::Button("Previous", false));
@@ -16,18 +18,21 @@ PlayerView::PlayerView(PlayerController* controller)
 
 	previous->signal_pressed()	.connect(sigc::mem_fun(controller, &PlayerController::on_previous_pressed));
 	play->signal_pressed()		.connect(sigc::mem_fun(controller, &PlayerController::on_play_pressed));
-	pause->signal_pressed()		.connect(sigc::mem_fun(controller, &PlayerController::on_pause_pressed));
 	stop->signal_pressed()		.connect(sigc::mem_fun(controller, &PlayerController::on_stop_pressed));
 	next->signal_pressed()		.connect(sigc::mem_fun(controller, &PlayerController::on_next_pressed));
 
 	add(*previous);
 	add(*play);
-	add(*pause);
 	add(*stop);
 	add(*next);
 }
 
-PlayerView::~PlayerView() {
-	// TODO Auto-generated destructor stub
+PlayerView::~PlayerView()
+{
 }
 
+void
+PlayerView::update(Observable* obs)
+{
+	std::cout << "PlayerView notified!" << std::endl;
+}

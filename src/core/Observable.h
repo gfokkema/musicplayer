@@ -9,9 +9,11 @@
 #ifndef OBSERVABLE_H_
 #define OBSERVABLE_H_
 
+class Observable;
+
 class Observer {
 public:
-	virtual void update() = 0;
+	virtual void update(Observable* obs) = 0;
 };
 
 class Observable {

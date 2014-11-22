@@ -17,7 +17,7 @@ void
 Observable::notifyObservers()
 {
 	for (Observer* obs : m_observers) {
-		obs->update();
+		obs->update(this);
 	}
 }
 

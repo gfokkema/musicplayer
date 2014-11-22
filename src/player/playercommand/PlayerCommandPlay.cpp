@@ -19,5 +19,6 @@ PlayerCommandPlay::execute()
 void
 PlayerCommandPlay::undo()
 {
+	std::cout << "Undo player start" << std::endl;
 	p_player->pause();
 }
